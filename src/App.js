@@ -40,7 +40,7 @@ class App extends React.Component {
   }
 
   render() {
-    return (
+    return this.state.todaysOrders.length > 0 ? (
       <div className="background">
         <h1>Ofada Admin</h1>
         <div className="content-box">
@@ -93,25 +93,11 @@ class App extends React.Component {
             }
           })}
         </div>
-        <div>
-          <div className="content-box">
-            <p>Name: jekanmo</p>
-            <div>
-              <p>badguy</p>
-              <p>hello</p>
-              <p>padie</p>
-              <p>mmsmsms</p>
-            </div>
-            <p>Food Type: Beans</p>
-            <p>Meal Price:5000</p>
-            <span>
-              Has Plate: <input type="radio" />
-              Order Sorted: <input type="checkbox" />
-            </span>
-            <br />
-          </div>
-        </div>
         <p>Total Price of Meals: {this.state.sumOfAllTodaysOrders}</p>
+      </div>
+    ) : (
+      <div className="background">
+        <h1>No Orders yet today</h1>
       </div>
     );
   }
