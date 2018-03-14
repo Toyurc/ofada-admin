@@ -1,4 +1,15 @@
 .background {
-  background-color: black;
-  color: white;
+    background-color: #121212;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+}
+
+.content-box {
+    box-sizing: border-box;
+    border: 1px solid #f1f1f1;
+    margin-bottom: 5px;
+    max-height: 100%;
+    max-width: 100%;
+    overflow: auto;
 }
