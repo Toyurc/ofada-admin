@@ -43,11 +43,11 @@ class App extends React.Component {
     return this.state.todaysOrders.length > 0 ? (
       <div className="background">
         <h1>Ofada Admin</h1>
-        <div className="content-box">
+        <div >
           {this.state.todaysOrders.map(order => {
             if (order.foodType === "non-swallow") {
               return (
-                <div>
+                < div className = "content-box" >
                   <span>Name: {order.user}</span>
                   <div>
                     {order.foodItems.map(food => (
@@ -68,11 +68,11 @@ class App extends React.Component {
             }
           })}
         </div>
-        <div className="content-box">
+        <div>
           {this.state.todaysOrders.map(order => {
             if (order.foodType === "swallow") {
               return (
-                <div>
+                < div className = "content-box" >
                   <p>Name: {order.user}</p>
                   <div>
                     {order.foodItems.map(food => (
