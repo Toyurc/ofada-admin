@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./App.css";
 import axios from "axios";
 
@@ -32,7 +32,7 @@ class App extends React.Component {
     axios
       .get("https://ofada-squad.herokuapp.com/food/today/total-price")
       .then(resp => {
-        this.setState({ sumOfAllTodaysOrders: resp.data.orders.sumOfAllOrders });
+        this.setState({ sumOfAllTodaysOrders: resp.data.sumOfAllOrders });
       })
       .catch(err => {
         console.log(err);
@@ -81,7 +81,7 @@ class App extends React.Component {
                       </p>
                     ))}
                   </div>
-                  <p>Food Type: {rder.foodType}</p>
+                  <p>Food Type: {order.foodType}</p>
                   <p>Meal Price: {order.priceOfOrder}</p>
                   <span>
                     Has Plate: <input type="radio" />
