@@ -21,7 +21,7 @@ class App extends React.Component {
     axios
       .get("https://ofada-squad.herokuapp.com/food/today/orders")
       .then(resp => {
-        this.setState({ todaysOrders: resp.data });
+        this.setState({ todaysOrders: resp.data.orders });
       })
       .catch(err => {
         console.log(err);
@@ -32,7 +32,7 @@ class App extends React.Component {
     axios
       .get("https://ofada-squad.herokuapp.com/food/today/total-price")
       .then(resp => {
-        this.setState({ sumOfAllTodaysOrders: resp.data.sumOfAllOrders });
+        this.setState({ sumOfAllTodaysOrders: resp.data.orders.sumOfAllOrders });
       })
       .catch(err => {
         console.log(err);
@@ -81,7 +81,7 @@ class App extends React.Component {
                       </p>
                     ))}
                   </div>
-                  <p>Food Type: {order.foodType}</p>
+                  <p>Food Type: {rder.foodType}</p>
                   <p>Meal Price: {order.priceOfOrder}</p>
                   <span>
                     Has Plate: <input type="radio" />
