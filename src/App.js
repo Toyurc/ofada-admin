@@ -8,7 +8,8 @@ class App extends React.Component {
     this.state = {
       //set initial state
       todaysOrders: [],
-      sumOfAllTodaysOrders: ""
+      sumOfAllTodaysOrders: "",
+      totalCounts: ""
     };
   }
 
@@ -21,7 +22,7 @@ class App extends React.Component {
     axios
       .get("https://ofada-squad.herokuapp.com/food/today/orders")
       .then(resp => {
-        this.setState({ todaysOrders: resp.data.orders });
+        this.setState({ todaysOrders: resp.data.orders, totalCounts: resp.data.count });
       })
       .catch(err => {
         console.log(err);
@@ -40,21 +41,17 @@ class App extends React.Component {
   }
 
   render() {
-    return this.state.todaysOrders.length > 0 ? (
-      <div className="background">
+    return this.state.todaysOrders.length > 0 ? <div className="background">
         <h1>Ofada Admin</h1>
-        <div >
+        <div>
           {this.state.todaysOrders.map(order => {
             if (order.foodType === "non-swallow") {
-              return (
-                < div className = "content-box" >
+              return <div className="content-box">
                   <span>Name: {order.user}</span>
                   <div>
-                    {order.foodItems.map(food => (
-                      <p>
+                    {order.foodItems.map(food => <p>
                         {food[0]} - {food[1]}
-                      </p>
-                    ))}
+                      </p>)}
                   </div>
                   <p>Food Type: {order.foodType}</p>
                   <p>Meal Price: {order.priceOfOrder}</p>
@@ -63,23 +60,19 @@ class App extends React.Component {
                     Order Sorted: <input type="checkbox" />
                   </span>
                   <br />
-                </div>
-              );
+                </div>;
             }
           })}
         </div>
         <div>
           {this.state.todaysOrders.map(order => {
             if (order.foodType === "swallow") {
-              return (
-                < div className = "content-box" >
+              return <div className="content-box">
                   <p>Name: {order.user}</p>
                   <div>
-                    {order.foodItems.map(food => (
-                      <p>
+                    {order.foodItems.map(food => <p>
                         {food[0]} - {food[1]}
-                      </p>
-                    ))}
+                      </p>)}
                   </div>
                   <p>Food Type: {order.foodType}</p>
                   <p>Meal Price: {order.priceOfOrder}</p>
@@ -88,18 +81,15 @@ class App extends React.Component {
                     Order Sorted: <input type="checkbox" />
                   </span>
                   <br />
-                </div>
-              );
+                </div>;
             }
           })}
         </div>
+        <p>Total Orders &#61; {this.state.totalCounts}</p>
         <p>Total Price of Meals: {this.state.sumOfAllTodaysOrders}</p>
-      </div>
-    ) : (
-      <div className="background">
+      </div> : <div className="background">
         <h1>No Orders yet today</h1>
-      </div>
-    );
+      </div>;
   }
 }
 export default App;
