@@ -97,7 +97,7 @@ class App extends React.Component {
       </div>
     ) : (
       <div className="background">
-        <h1>No Orders yet today</h1>
+        <h1>No Orders yet today. We await your orders.</h1>
       </div>
     );
   }
